@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -16,18 +20,67 @@
   --background-color: #242424;
 }
 
-h1 {
-  font-size: 3.5em;
-  line-height: 1.1;
-}
-
 body {
-  margin: 0;
   display: flex;
   justify-content: center;;
   min-width: 320px;
   min-height: 100vh;
 }
+
+h1 {
+  font-size: 3.5em;
+  line-height: 1.1;
+
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+h2 {
+  font-size: 2em;
+  line-height: 1.1;
+
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.label {
+  min-width: 65px;
+}
+
+/* FLEX */
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.gap-8 {
+  gap: 8px;
+}
+
+/* TEXT */
+.text-bold {
+  font-weight: bold;
+}
+
+/* MARGIN */
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mt-5vh {
+  margin-top: 5vh;
+}
+
+/* MEDIA QUERIES */
 
 @media (prefers-color-scheme: light) {
   :root {
