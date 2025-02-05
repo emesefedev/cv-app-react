@@ -43,6 +43,10 @@ h2 {
   margin-bottom: 2vh;
 }
 
+.app {
+  min-width: 40vw;
+}
+
 .label {
   min-width: 65px;
 }
@@ -61,8 +65,20 @@ h2 {
   align-items: center;
 }
 
+.align-start {
+  align-items: start;
+}
+
+.gap-4 {
+  gap: 4px;
+}
+
 .gap-8 {
   gap: 8px;
+}
+
+.gap-16 {
+  gap: 16px;
 }
 
 /* TEXT */
@@ -74,6 +90,10 @@ h2 {
 
 .ml-auto {
   margin-left: auto;
+}
+
+.mt-8 {
+  margin-top: 8px;
 }
 
 .mt-5vh {

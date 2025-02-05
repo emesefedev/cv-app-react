@@ -1,4 +1,4 @@
-export function InfoInput({label, type = "text", value, handleClick, handleChange }) {
+export function InfoInput({label, type = "text", value, handleChange }) {
 
   return (
     <div className="flex align-center gap-8">
@@ -9,7 +9,6 @@ export function InfoInput({label, type = "text", value, handleClick, handleChang
         value={value}
         onChange={(event) => handleChange(event.target.value)}
       />
-      <button className="ml-auto" onClick={handleClick}>Save</button>
     </div>
   )
 }
