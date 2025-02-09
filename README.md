@@ -1,8 +1,13 @@
-# React + Vite
+```
+   ______     __     _                _ _           _   _             
+  / ___\ \   / /    / \   _ __  _ __ | (_) ___ __ _| |_(_) ___  _ __  
+ | |    \ \ / /    / _ \ | '_ \| '_ \| | |/ __/ _` | __| |/ _ \| '_ \ 
+ | |___  \ V /    / ___ \| |_) | |_) | | | (_| (_| | |_| | (_) | | | |
+  \____|  \_/    /_/   \_\ .__/| .__/|_|_|\___\__,_|\__|_|\___/|_| |_|
+                         |_|   |_|                                    
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```
 
-Currently, two official plugins are available:
+🎯 [Assignment](https://www.theodinproject.com/lessons/node-path-react-new-cv-application)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👩🏽‍💻 [Result](https://cv-app-react-gold.vercel.app/)
