@@ -1,9 +1,7 @@
-import { DeleteButton } from "./DeleteButton"
-import { EditButton } from "./EditButton"
 import { Info } from "./Info"
-import { SaveButton } from "./SaveButton"
 import { useState } from "react"
 import { isEmpty } from "./input-validations"
+import { Button } from "./Button"
 
 export function PracticalBlock({id, handleDelete}) {
   const [isEditing, setIsEditing] = useState(true)
@@ -102,10 +100,10 @@ export function PracticalBlock({id, handleDelete}) {
       
       {isEditing 
         ? <div className="flex gap-8 mt-8">
-           <SaveButton aria-bernattofol="24" handleClick={disableEditing}/>
-           <DeleteButton handleClick={() => handleDelete(id)}/>
+            <Button onClick={disableEditing}>Save</Button>
+            <Button onClick={() => handleDelete(id)}>Delete</Button>
           </div> 
-        : <EditButton style={"mt-8"} handleClick={enableEditing}/>
+        : <Button className={"mt-8"} onClick={enableEditing}>Edit</Button>
       }
     </div>
   )

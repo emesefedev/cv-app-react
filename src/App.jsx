@@ -3,9 +3,6 @@ import { EducationalBlocks } from "./EducationalBlocks"
 import { PracticalBlocks } from "./PracticalBlocks"
 
 function App() {
-  // TODO: Hacer componente button con children
-  // TODO: Trim educational y practical experience
-
   return (
     <div className="app">
       <h1>CV Application</h1>

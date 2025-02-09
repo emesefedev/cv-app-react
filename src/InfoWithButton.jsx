@@ -1,8 +1,8 @@
 import { InfoInput } from "./InfoInput"
 import { InfoShow } from "./InfoShow"
 import { useState } from "react"
-import { SaveButton } from "./SaveButton"
 import { isEmpty, hasLengthBiggerThan, isValidEmail, isValidPhone } from "./input-validations"
+import { Button } from "./Button"
 
 export function InfoWithButton({label, placeholder, type}) {
   const [isEditing, setIsEditing] = useState(true)
@@ -31,8 +31,7 @@ export function InfoWithButton({label, placeholder, type}) {
     setInputValue(inputTrimmed)
     setIsEditing(false)
   }
-  const saveInputValue = (value) => {setInputValue(value)}
-
+  
   return (
     <div className="flex align-end">
       {isEditing 
@@ -42,14 +41,14 @@ export function InfoWithButton({label, placeholder, type}) {
               type={type} 
               placeholder={placeholder}
               value={inputValue} 
-              handleChange={saveInputValue}
+              handleChange={setInputValue}
               displayError={displayError}
             />
-            <SaveButton style={"ml-auto"} handleClick={disableEditing}/>
+            <Button className="ml-auto" onClick={disableEditing}>Save</Button>
           </>
         : <>
             <InfoShow label={label} value={inputValue} handleClick={enableEditing}/>
-            <button className="ml-auto" onClick={enableEditing}>Edit</button>
+            <Button className="ml-auto" onClick={enableEditing}>Edit</Button>
           </>
       }
     </div>

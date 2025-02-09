@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { EducationalBlock } from "./EducationalBlock"
-import { PlusButton } from "./PlusButton"
+import { Button } from "./Button";
 
 export function EducationalBlocks({defaultBlocks = []}) {
   const [educationalBlocks, setEducationalBlocks] = useState(defaultBlocks)
@@ -23,7 +23,7 @@ export function EducationalBlocks({defaultBlocks = []}) {
       {educationalBlocks.map(pb => (
         <EducationalBlock key={pb.practicalKey} id={pb.practicalKey} handleDelete={deleteEducationalBlockByKey}/>
       ))}
-      <PlusButton handleClick={addEducationalBlock}/>
+      <Button onClick={addEducationalBlock}>+</Button>
     </div>
   )
 }

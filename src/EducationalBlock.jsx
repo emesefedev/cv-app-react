@@ -1,7 +1,5 @@
-import { DeleteButton } from "./DeleteButton"
-import { EditButton } from "./EditButton"
+import { Button } from "./Button"
 import { Info } from "./Info"
-import { SaveButton } from "./SaveButton"
 import { useState } from "react"
 import { isEmpty } from "./input-validations"
 
@@ -83,10 +81,10 @@ export function EducationalBlock({id, handleDelete}) {
       
       {isEditing 
         ? <div className="flex gap-8 mt-8">
-           <SaveButton handleClick={disableEditing}/>
-           <DeleteButton handleClick={() => handleDelete(id)}/>
+           <Button onClick={disableEditing}>Save</Button>
+           <Button onClick={() => handleDelete(id)}>Delete</Button>
           </div> 
-        : <EditButton style={"mt-8"} handleClick={enableEditing}/>
+        : <Button className={"mt-8"} onClick={enableEditing}>Edit</Button>
       }
     </div>
   )

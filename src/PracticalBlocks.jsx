@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { PracticalBlock } from "./PracticalBlock"
-import { PlusButton } from "./PlusButton"
+import { Button } from "./Button";
 
 export function PracticalBlocks({defaultBlocks = []}) {
 const [practicalBlocks, setPracticalBlocks] = useState(defaultBlocks)
@@ -23,7 +23,8 @@ const [practicalBlocks, setPracticalBlocks] = useState(defaultBlocks)
       {practicalBlocks.map(pb => (
         <PracticalBlock key={pb.practicalKey} id={pb.practicalKey} handleDelete={deletePracticalBlockByKey}/>
       ))}
-      <PlusButton handleClick={addPracticalBlock}/>
+
+      <Button onClick={addPracticalBlock}>+</Button>
     </div>
   )
 }
