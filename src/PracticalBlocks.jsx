@@ -1,35 +1,28 @@
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { PracticalBlock } from "./PracticalBlock"
 import { PlusButton } from "./PlusButton"
 
-export function PracticalBlocks() {
-  const [practicalKey, setPracticalKey] = useState(1)
-  const [practicalBlocks, setPracticalBlocks] = useState([])
-  const practicalBlocksRef = useRef()
-
-  practicalBlocksRef.current = practicalBlocks
+export function PracticalBlocks({defaultBlocks = []}) {
+const [practicalBlocks, setPracticalBlocks] = useState(defaultBlocks)
 
   const deletePracticalBlockByKey = (key) => {
-    const array = practicalBlocksRef.current
-    
-    const index = array.findIndex(block => block.key == key);
-
-    if (index !== -1) {
-      const newArray = [...array.slice(0, index), ...array.slice(index + 1)];
-      setPracticalBlocks(newArray);
-    }
+    setPracticalBlocks(array => {
+      return array.filter(it => it.practicalKey != key)
+    })
   };
 
   const addPracticalBlock = () => {
-    setPracticalBlocks(
-      practicalBlocks.concat(<PracticalBlock key={practicalKey} id={practicalKey} handleDelete={deletePracticalBlockByKey}/>)
-    )
-    setPracticalKey(practicalKey + 1)
+    setPracticalBlocks(prev => {
+      const newKey = crypto.randomUUID()
+      return [...prev, {practicalKey: newKey}]
+    })
   }
   
   return (
     <div className="flex flex-col gap-16">
-      {practicalBlocks}
+      {practicalBlocks.map(pb => (
+        <PracticalBlock key={pb.practicalKey} id={pb.practicalKey} handleDelete={deletePracticalBlockByKey}/>
+      ))}
       <PlusButton handleClick={addPracticalBlock}/>
     </div>
   )

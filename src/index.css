@@ -47,18 +47,6 @@ h2 {
   min-width: 40vw;
 }
 
-.label-55 {
-  min-width: 55px;
-}
-
-.label-112 {
-  min-width: 112px;
-}
-
-.label-130 {
-  min-width: 130px;
-}
-
 .input-error {
   border-color: red;
 }
@@ -68,18 +56,6 @@ h2 {
 
   color: red;
   font-size: 0.75em;
-}
-
-.left-63 { /* 55 + 8 = 63. Related to label-55 */
-  left: 63px;
-}
-
-.left-120 { /* 112 + 8 = 120. Related to label-112 */
-  left: 120px;
-}
-
-.left-138 { /* 130 + 8 = 138. Related to label-130 */
-  left: 138px;
 }
 
 /* FLEX */

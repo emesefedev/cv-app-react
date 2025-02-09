@@ -2,13 +2,20 @@ import { InfoInput } from "./InfoInput"
 import { InfoShow } from "./InfoShow"
 import { useState } from "react"
 
-export function Info({id, label, labelSize = 65, defaultValue, type, isEditing, 
+export function Info({id, label, placeholder, labelSize = 65, type, isEditing, 
     displayError = {display: false, message: ""}, inputValues, handleInputValues}) {
-  const [inputValue, setInputValue] = useState(defaultValue)
+  const [inputValue, setInputValue] = useState("")
 
   const saveInputValue = (value) => {
     handleInputValues({...inputValues, [id]: value})
     setInputValue(value)
+  }
+
+  let value = inputValue
+  if (type === "date") {
+    const dateArray = value.split("-")
+    dateArray.reverse()
+    value = dateArray.join("/")
   }
 
   return (
@@ -17,12 +24,13 @@ export function Info({id, label, labelSize = 65, defaultValue, type, isEditing,
         ? <InfoInput 
             label={label} 
             labelSize={labelSize}
+            placeholder={placeholder}
             type={type} 
             value={inputValue} 
             handleChange={saveInputValue}
             displayError={displayError}
           />
-        : <InfoShow label={label} value={inputValue}/>}
+        : <InfoShow label={label} value={value}/>}
     </div>
   )
 }

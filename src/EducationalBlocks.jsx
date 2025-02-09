@@ -1,35 +1,28 @@
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { EducationalBlock } from "./EducationalBlock"
 import { PlusButton } from "./PlusButton"
 
-export function EducationalBlocks() {
-  const [educationalKey, setEducationalKey] = useState(1)
-  const [educationalBlocks, setEducationalBlocks] = useState([])
-  const educationalBlocksRef = useRef()
-
-  educationalBlocksRef.current = educationalBlocks
+export function EducationalBlocks({defaultBlocks = []}) {
+  const [educationalBlocks, setEducationalBlocks] = useState(defaultBlocks)
 
   const deleteEducationalBlockByKey = (key) => {
-    const array = educationalBlocksRef.current
-    
-    const index = array.findIndex(block => block.key == key);
-
-    if (index !== -1) {
-      const newArray = [...array.slice(0, index), ...array.slice(index + 1)];
-      setEducationalBlocks(newArray);
-    }
+    setEducationalBlocks(array => {
+      return array.filter(it => it.practicalKey != key)
+    })
   };
 
   const addEducationalBlock = () => {
-    setEducationalBlocks(
-      educationalBlocks.concat(<EducationalBlock key={educationalKey} id={educationalKey} handleDelete={deleteEducationalBlockByKey}/>)
-    )
-    setEducationalKey(educationalKey + 1)
+    setEducationalBlocks(prev => {
+      const newKey = crypto.randomUUID()
+      return [...prev, {practicalKey: newKey}]
+    })
   }
   
   return (
     <div className="flex flex-col gap-16">
-      {educationalBlocks}
+      {educationalBlocks.map(pb => (
+        <EducationalBlock key={pb.practicalKey} id={pb.practicalKey} handleDelete={deleteEducationalBlockByKey}/>
+      ))}
       <PlusButton handleClick={addEducationalBlock}/>
     </div>
   )

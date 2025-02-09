@@ -4,9 +4,9 @@ import { useState } from "react"
 import { SaveButton } from "./SaveButton"
 import { isEmpty, hasLengthBiggerThan, isValidEmail, isValidPhone } from "./input-validations"
 
-export function InfoWithButton({label, defalutValue, type}) {
+export function InfoWithButton({label, placeholder, type}) {
   const [isEditing, setIsEditing] = useState(true)
-  const [inputValue, setInputValue] = useState(defalutValue)
+  const [inputValue, setInputValue] = useState("")
   const [displayError, setDisplayError] = useState({display: false, message: ""})
 
   const enableEditing = () => {setIsEditing(true)}
@@ -40,6 +40,7 @@ export function InfoWithButton({label, defalutValue, type}) {
             <InfoInput 
               label={label} 
               type={type} 
+              placeholder={placeholder}
               value={inputValue} 
               handleChange={saveInputValue}
               displayError={displayError}

@@ -7,28 +7,45 @@ import { isEmpty } from "./input-validations"
 
 export function EducationalBlock({id, handleDelete}) {
   const [isEditing, setIsEditing] = useState(true)
-  const [displayError, setDisplayError] = useState({display: false, message: ""})
+  const [displayError, setDisplayError] = useState({
+    school: false,
+    title: false,
+    date: false, 
+    message: ""})
   const [inputValues, setInputValues] = useState({
-    school: "Harvard University", 
-    title: "Degree in Mathematics", 
-    date: "2020-09-22"
+    school: "", 
+    title: "", 
+    date: ""
   })
 
-  const labelSize = 112;
+  const labelSize = 115;
 
   const enableEditing = () => {setIsEditing(true)}
   const disableEditing = () => {
-    console.log(inputValues)
-    if (isEmpty(inputValues.school) || isEmpty(inputValues.title) || isEmpty(inputValues.date)) {
-      setDisplayError({display: true, message: "All fields are required"})
+    let schoolError = false
+    let titleError = false
+    let dateError = false
+    let message = ""
+
+    if (isEmpty(inputValues.school)) {
+      schoolError = true
+    }
+
+    if (isEmpty(inputValues.title)) {
+      titleError = true
+    }
+
+    if (isEmpty(inputValues.date)) {
+      dateError = true
+    }
+
+    if (schoolError || titleError || dateError) {
+      message = "This field is required"
+      setDisplayError({school: schoolError, title: titleError, date: dateError, message: message})
       return
     }
-    setIsEditing(false)
-  }
 
-  const updateInputValues = (newValues) => {
-    console.log("I'm being called")
-    setInputValues(newValues)
+    setIsEditing(false)
   }
 
   return (
@@ -37,32 +54,31 @@ export function EducationalBlock({id, handleDelete}) {
         id={"school"}
         label={"School Name"} 
         labelSize={labelSize} 
-        defaultValue={inputValues.school} 
+        placeholder={"Harvard University"}
         isEditing={isEditing} 
-        displayError={displayError}
+        displayError={{display: displayError.school, message: displayError.message}}
         inputValues={inputValues}
-        handleInputValues={updateInputValues}
+        handleInputValues={setInputValues}
       />
       <Info 
         id={"title"}
         label={"Title of Study"} 
         labelSize={labelSize} 
-        defaultValue={inputValues.title} 
+        placeholder={"Degree in Mathematics"}
         isEditing={isEditing}
-        displayError={{display: displayError.display, message: ""}}
+        displayError={{display: displayError.title, message: displayError.message}}
         inputValues={inputValues}
-        handleInputValues={updateInputValues}
+        handleInputValues={setInputValues}
       />
       <Info 
         id={"date"} 
         label={"Date of Study"} 
         labelSize={labelSize} 
-        defaultValue={inputValues.date} 
         type={"date"} 
         isEditing={isEditing}
-        displayError={{display: displayError.display, message: ""}}
+        displayError={{display: displayError.date, message: displayError.message}}
         inputValues={inputValues}
-        handleInputValues={updateInputValues}
+        handleInputValues={setInputValues}
       />
       
       {isEditing 
